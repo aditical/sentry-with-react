@@ -1,22 +1,20 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [username, setUserName] = useState("")
+  const [displayName, setDisplayName] = useState(false)
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        Sentry with React           
+        <div className="container">      
+          <input className="inputBox" type="text" name="name" placeholder='Enter your name' onChange={(e) =>setUserName(e.target.value)}/>
+          <button className="primaryButton" onClick={() =>setDisplayName(true)}>Enter</button>            
+        </div>
+        {displayName && username &&
+          <span className="message">Hi 👋 {username}, welcome to Beginning of this Project.</span>
+         }
       </header>
     </div>
   );
